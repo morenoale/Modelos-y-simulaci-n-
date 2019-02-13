@@ -1,0 +1,38 @@
+# Fundamentos de probabilidad 
+# Simular el lanzamiento de una moneda(experimento Bernoulli)
+# Genera valores aleatorios n (cantidades de v.a), size=(exp),prob
+rbinom(1,1,0.5)
+#Simular 10 lanzamientos de una moneda y observar los resultados 
+rbinom(10,1,0.5)
+#Contabilizar cuantos exitos (1) se obtuvieron en 10 lanzamientos 
+rbinom(1,10,0.5)
+#Lanzar 10 veces un total de 10 monedas y contabilizar los exitos
+rbinom(10,10,0.5)
+#Observar los valores obtenidos, minimo, maximo y media si modificamos el experimento
+#y la moneda esta cargada
+rbinom(10,10,0.8)
+
+# Se desea estudiar 1000 simulaciones del experimento de lanzar una moneda
+# equilibrada 10 veces
+lanza<-rbinom(10000,10,0.5)
+hist(lanza,xlab = "Número de éxitos")
+
+prob5 <- mean(lanza==5);prob5
+# Es posible emplear la funcion mean ya que considera valores 
+
+dbinom(5,10,0.5)
+
+
+#Estimar una probabilidad acumulada con simulacion 
+# P(x<=4)
+prob4 <- mean(lanza<=4)
+prob4
+pbinom(4,10,0.5,TRUE)
+
+#Obtenga la probabilidad de tener al menos 5 exitos en el experimento 
+#binomial de lanzar 10 monedas cargadas con p=0.30
+1-pbinom(4,10,0.30,TRUE)
+
+#Obtenga la varianza de un experimento ~ Bin (25,0.30) a traves de simular la va
+var(rbinom(10000,10,0.30)>=5)
+mean(rbinom(10000,10,0.30)>=5)
